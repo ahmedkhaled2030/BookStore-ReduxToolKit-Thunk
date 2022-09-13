@@ -1,0 +1,28 @@
+{
+    "books":[
+        {
+        "id": 1,
+        "title": "learn React",
+        "description":"learn React from scratch",
+        "price" : 30
+    },
+    {
+        "id": 2,
+        "title": "learn Javascript",
+        "description":"learn Javascript from scratch",
+        "price" : 40
+    },
+    {
+        "id": 3,
+        "title": "learn Angular",
+        "description":"learn Angular from scratch",
+        "price" : 25
+    },
+    {
+        "id": 4,
+        "title": "learn Flutter",
+        "description":"learn Flutter from scratch",
+        "price" : 20
+    }
+]
+}
