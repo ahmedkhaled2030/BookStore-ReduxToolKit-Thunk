@@ -1,43 +1,54 @@
 import {
   createSlice,
-  createAsyncThink,
+  rejectWithValue,
   createAsyncThunk,
 } from "@reduxjs/toolkit";
 
 export const getBooks = createAsyncThunk(
   "book/getBooks",
   async (_, thunkAPI) => {
+    const { rejectWithValue } = thunkAPI;
+    //rejectWithValue ميثود بتحصل لما يكون في ايرور
+    //لما يجيليها داتا بيترتب عليه ان ريجيكت بتشتغل
     try {
       const res = await fetch("http://localhost:3009/books");
       const data = await res.json();
       return data;
     } catch (e) {
-      console.log(e);
+      return rejectWithValue(e.message)
     }
   }
 );
 
 const bookSlice = createSlice({
   name: "book",
-  initialState: { books: null },
+  initialState: { books: [] , isLoading : false ,error : null},
     extraReducers: {
       //asyncThunk makes 3 actions (pending , fulfilled , rejected)
-    [getBooks.pending]: (state, action) => {
-      console.log(action);
+      [getBooks.pending]: (state, action) => {
+        state.isLoading = true;
+        state.error = null;
+      
       //   {type: 'book/getBooks/pending', payload: undefined, meta: {…}}
       // meta: {arg: undefined, requestId: 'Uv-LIAoZ-qpPh6-hIDXCP', requestStatus: 'pending'}
       // arg will be defined if  i send parameter when i dispatch action from components
     },
-    [getBooks.fulfilled]: (state, action) => {
-        console.log(action);
+      [getBooks.fulfilled]: (state, action) => {
+        state.isLoading = false;
+        state.books = action.payload;
+        //immer take the task of non mutating the state =>action.payload
+        console.log(action.payload)
         //{type: 'book/getBooks/fulfilled', payload: Array(4), meta: {…}}
         // payload: (4) [{…}, {…}, {…}, {…}]
         // meta: {arg: undefined, requestId: 'ac-msKAcnnz4mRJPqaalf', requestStatus: 'fulfilled'}
         
 
     },
-    [getBooks.rejected]: (state, action) => {
-      console.log(action);
+      [getBooks.rejected]: (state, action) => {
+        state.isLoading = false;
+        
+        state.error = action.payload
+        console.log(action.payload)
     },
   },
 });
