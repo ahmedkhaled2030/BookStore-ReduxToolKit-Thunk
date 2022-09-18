@@ -15,7 +15,7 @@ const Header = () => {
 </div>
         )}
       
-      <nav className='navbar navbar-dark bg-dark col-lg-12' style={{ 'backgroundColor': 'black', 'display':'flex'}}>
+      <nav className=' navbar-dark bg-dark col-lg-12' style={{ 'backgroundColor': 'black', 'display':'flex' , 'borderRadius' : 'none', 'marginBottom':'20px'}}>
       <span className='navbar-brand  h1 col-lg-9' style={{'color':'white'}}>My Books</span>
 
       {/* <button className='btn btn-outline-primary col-lg-3' type='submit'>

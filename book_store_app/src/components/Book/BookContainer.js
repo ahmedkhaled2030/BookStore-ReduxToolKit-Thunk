@@ -17,12 +17,12 @@ const PostContainer = () => {
   }, [dispatch]);
   return (
     <Fragment>
-      <hr className='my-5' />
+      <hr className='my-5' style={{'color': 'black'}} />
       <div className='row' style={{'display':'flex' , 'justifyContent':'center', 'alignItems': 'center'}}>
         <div className='col-lg-6'>
           <BooksList isLoading = {isLoading} books={books} />
         </div>
-        <div className='col-lg-6 side-line'>
+        <div className='col-lg-6 side-line' style={{'border': '1px solid #ddd'}}>
           <BookInfo />
         </div>
       </div>

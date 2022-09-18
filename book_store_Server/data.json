@@ -1,28 +1,34 @@
 {
-    "books":[
-        {
-        "id": 1,
-        "title": "Learn React",
-        "description":"Learn React from scratch",
-        "price" : 30
+  "books": [
+    {
+      "id": 1,
+      "title": "Learn React",
+      "description": "Learn React from scratch",
+      "price": 30
     },
     {
-        "id": 2,
-        "title": "Learn Javascript",
-        "description":"Learn Javascript from scratch",
-        "price" : 40
+      "id": 2,
+      "title": "Learn Javascript",
+      "description": "Learn Javascript from scratch",
+      "price": 40
     },
     {
-        "id": 3,
-        "title": "Learn Angular",
-        "description":"Learn Angular from scratch",
-        "price" : 25
+      "id": 3,
+      "title": "Learn Angular",
+      "description": "Learn Angular from scratch",
+      "price": 25
     },
     {
-        "id": 4,
-        "title": "Learn Flutter",
-        "description":"Learn Flutter from scratch",
-        "price" : 20
+      "id": 4,
+      "title": "Learn Flutter",
+      "description": "Learn Flutter from scratch",
+      "price": 20
+    },
+    {
+      "title": "Learn Python",
+      "price": "90",
+      "description": "Learn Pythonfrom scratch",
+      "id": 5
     }
-]
+  ]
 }
