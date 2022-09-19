@@ -17,13 +17,6 @@
       "title": "Learn Angular",
       "description": "Learn Angular from scratch",
       "price": 25
-    },
-    {
-      "title": "Learn HTML",
-      "price": "9",
-      "description": "Learn HTML",
-      "userName": "CodeBindHex",
-      "id": 4
     }
   ]
 }

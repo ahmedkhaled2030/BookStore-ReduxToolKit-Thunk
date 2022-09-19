@@ -24,21 +24,41 @@ export const insertBook = createAsyncThunk(
   "book/insertBook",
   async (bookData, thunkAPI) => {
     const { rejectWithValue, getState } = thunkAPI;
-    //getState => get the global state of app and enter the certain reducer 
+    //getState => get the global state of app and enter the certain reducer
     try {
       bookData.userName = getState().auth.name;
       const res = await fetch("http://localhost:3009/books", {
         method: "POST",
         body: JSON.stringify(bookData),
         headers: {
-          'Content-type': 'application/json; charset= UTF-8'
+          "Content-type": "application/json; charset= UTF-8",
         },
       });
-      console.log(res)
+      console.log(res);
       const data = await res.json();
-      console.log(data)
+      console.log(data);
       return data;
-      //data is the object from createAsyncThunk 
+      //data is the object from createAsyncThunk
+    } catch (e) {
+      return rejectWithValue(e.message);
+    }
+  }
+);
+
+export const deleteBook = createAsyncThunk(
+  "book/deleteBook",
+  async (id, thunkAPI) => {
+    const { rejectWithValue } = thunkAPI;
+
+    try {
+       await fetch(`http://localhost:3009/books/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-type": "application/json; charset= UTF-8",
+        },
+      });
+
+      return id;
     } catch (e) {
       return rejectWithValue(e.message);
     }
@@ -77,20 +97,34 @@ const bookSlice = createSlice({
 
     //insertBook
 
-    [insertBook.pending]: (state,action) => {
+    [insertBook.pending]: (state, action) => {
       state.isLoading = true;
       state.error = null;
     },
-    [insertBook.fulfilled]: (state,action) => {
+    [insertBook.fulfilled]: (state, action) => {
       state.isLoading = false;
-    
+
       state.books.push(action.payload);
       // data is the object from createAsyncThunk  = action
     },
-    [insertBook.rejected]: (state,action) => {
+    [insertBook.rejected]: (state, action) => {
       state.isLoading = false;
       state.error = null;
-    }
+    },
+
+    //deleteBook
+    [deleteBook.pending]: (state, action) => {
+      state.isLoading = true;
+      state.error = null;
+    },
+    [deleteBook.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.books = state.books.filter((book) => book.id !== action.payload )
+    },
+    [deleteBook.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = null;
+    },
   },
 });
 

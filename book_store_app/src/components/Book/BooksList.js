@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from 'react-redux';
 
 
-const BooksList = ({ isLoading, books }) => {
+const BooksList = ({ isLoading, books  ,deleteBook , dispatch }) => {
   const { isLoggedIn } = useSelector((state) => state.auth)
   
   const BookList =books.length > 0 ?  books.map((item) => (
@@ -15,7 +15,7 @@ const BooksList = ({ isLoading, books }) => {
         <button type="button" className="btn btn-primary" style={{marginRight:'20px'}}>
           Read
         </button>
-        <button type="button" className="btn btn-danger" disabled={!isLoggedIn}>
+        <button type="button" className="btn btn-danger" disabled={!isLoggedIn} onClick={() => dispatch(deleteBook(item.id))}>
           Delete
         </button>
       </div>
