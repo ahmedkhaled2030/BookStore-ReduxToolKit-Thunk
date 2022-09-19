@@ -10,6 +10,7 @@ const Addform = () => {
   const title = useRef(null);
   const price = useRef(null);
   const description = useRef(null);
+  const image = useRef(null);
 
   const dispatch = useDispatch();
 
@@ -19,12 +20,14 @@ const Addform = () => {
       title: title.current.value,
       price: price.current.value,
       description: description.current.value,
+      image: image.current.value,
     }
     console.log(data)
     dispatch(insertBook(data));
     title.current.value = null;
     price.current.value = null;
     description.current.value = null;
+    image.current.value = null;
     
   }
 
@@ -51,6 +54,10 @@ const Addform = () => {
               required
               ref={description}
             ></textarea>
+          </div>
+          <div className='form-group'>
+            <label htmlFor='image'>Image Link</label>
+            <input type='text' className='form-control' id='image' required ref={image} />
           </div>
           <button type='submit' className='btn btn-primary' disabled={!isLoggedIn}>
             Submit

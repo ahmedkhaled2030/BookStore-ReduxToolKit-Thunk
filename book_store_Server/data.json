@@ -1,10 +1,42 @@
 {
   "books": [
     {
-      "id": 1,
-      "title": "Learn React",
-      "description": "Learn React from scratch",
-      "price": 30
+      "title": "Infernal Devices",
+      "price": "20",
+      "description": "HE INHERITED A WATCHMAKER'S STORE - AND A WHOLE HEAP OF TROUBLE",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1320437674i/9222475.jpg",
+      "id": 1
+    },
+    {
+      "title": "The Warlord of the Air",
+      "price": "15",
+      "description": "Suppose that a few of our present inventions had been made earlier, and others not discovered at all? How would the last century have evolved differently?",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1425824787i/432879.jpg",
+      "id": 2
+    },
+    {
+      "title": "Life of Pi",
+      "price": "27",
+      "description": "Life of Pi is a fantasy adventure novel by Yann Martel published in 2001",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1631251689i/4214.jpg",
+      "userName": "CodeBindHex",
+      "id": 3
+    },
+    {
+      "title": "The Help",
+      "price": "30",
+      "description": "Three ordinary women are about to take one extraordinary step.",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1622355533i/4667024.jpg",
+      "userName": "CodeBindHex",
+      "id": 4
+    },
+    {
+      "title": "All the Light We Cannot See",
+      "price": "40",
+      "description": "Marie-Laure lives in Paris near the Museum of Natural History",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1451445646i/18143977.jpg",
+      "userName": "CodeBindHex",
+      "id": 5
     }
   ]
 }

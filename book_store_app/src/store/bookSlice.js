@@ -4,6 +4,8 @@ import {
   createAsyncThunk,
 } from "@reduxjs/toolkit";
 
+import { logInsert } from "./reportSlice";
+
 export const getBooks = createAsyncThunk(
   "book/getBooks",
   async (_, thunkAPI) => {
@@ -23,9 +25,11 @@ export const getBooks = createAsyncThunk(
 export const insertBook = createAsyncThunk(
   "book/insertBook",
   async (bookData, thunkAPI) => {
-    const { rejectWithValue, getState } = thunkAPI;
+    const { rejectWithValue, getState, dispatch } = thunkAPI;
     //getState => get the global state of app and enter the certain reducer
     try {
+      //you can dispatch action from action to delete book when you add new book
+      // dispatch(deleteBook({ id: 1 }));
       bookData.userName = getState().auth.name;
       const res = await fetch("http://localhost:3009/books", {
         method: "POST",
@@ -36,10 +40,13 @@ export const insertBook = createAsyncThunk(
       });
       console.log(res);
       const data = await res.json();
-      console.log(data);
+      //dispatch action from action
+      dispatch(logInsert({ name: "insertBook", status: "success" }));
       return data;
       //data is the object from createAsyncThunk
     } catch (e) {
+      //dispatch action from action
+      dispatch(logInsert({ name: "insertBook", status: "failed" }));
       return rejectWithValue(e.message);
     }
   }
@@ -51,7 +58,7 @@ export const deleteBook = createAsyncThunk(
     const { rejectWithValue } = thunkAPI;
 
     try {
-       await fetch(`http://localhost:3009/books/${item.id}`, {
+      await fetch(`http://localhost:3009/books/${item.id}`, {
         method: "DELETE",
         headers: {
           "Content-type": "application/json; charset= UTF-8",
@@ -119,7 +126,10 @@ const bookSlice = createSlice({
     },
     [deleteBook.fulfilled]: (state, action) => {
       state.isLoading = false;
-      state.books = state.books.filter((book) => book.id !== action.payload.item )
+
+      state.books = state.books.filter(
+        (book) => book.id !== action.payload.id
+      );
     },
     [deleteBook.rejected]: (state, action) => {
       state.isLoading = false;
