@@ -1,7 +1,12 @@
 import React, { Fragment} from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector , useDispatch } from 'react-redux';
+import './Header.css';
+import {login} from '../store/authSlice'
+
 
 const Header = () => {
+  const dispatch = useDispatch();
+ const {isLoggedIn} = useSelector((state) => state.auth)
 
   const {error}  = useSelector((state)=> state.books)
   return (
@@ -10,18 +15,16 @@ const Header = () => {
       {error && 
       
         (
-          <div class="alert alert-danger" role="alert">
+          <div className="alert alert-danger" role="alert">
  {error}
 </div>
         )}
       
-      <nav className=' navbar-dark bg-dark col-lg-12' style={{ 'backgroundColor': 'black', 'display':'flex' , 'borderRadius' : 'none', 'marginBottom':'20px'}}>
-      <span className='navbar-brand  h1 col-lg-9' style={{'color':'white'}}>My Books</span>
+      <div className='navbar' >
+      <span className='navbar-brand h1 ' style={{'color':'white'}}>My Books</span>
 
-      {/* <button className='btn btn-outline-primary col-lg-3' type='submit'>
-        Log In
-      </button> */}
-    </nav>
+      <button type="button" className="btn btn-danger" onClick={() => dispatch(login(!isLoggedIn))}>{isLoggedIn ? 'logout': 'login'}</button>
+    </div>
     
 
       

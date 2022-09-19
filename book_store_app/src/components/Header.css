@@ -1,0 +1,11 @@
+.navbar{
+background-color: black;
+padding: 20px;
+display: flex;
+align-items: center;
+
+}
+
+.btn{
+    padding: 7px 25px;
+}

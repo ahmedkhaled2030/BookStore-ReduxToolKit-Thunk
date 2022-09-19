@@ -1,8 +1,11 @@
 import React , {useRef} from 'react';
-import { useDispatch } from 'react-redux';
-import {insertBook} from '../store/bookSlice'
+import { useSelector , useDispatch } from 'react-redux';
+import { insertBook } from '../store/bookSlice';
+import './AddForm.css';
+
 
 const Addform = () => {
+  const {isLoggedIn} = useSelector((state) => state.auth)
 
   const title = useRef(null);
   const price = useRef(null);
@@ -29,7 +32,7 @@ const Addform = () => {
   return (
     <div className='row'>
       <div className='col-6 offset-3 mt-3'>
-        <h2>Insert Book</h2>
+        <h2 >Insert Book</h2>
         <form onSubmit={handleSubmit}>
           <div className='form-group'>
             <label htmlFor='title'>Title</label>
@@ -49,7 +52,7 @@ const Addform = () => {
               ref={description}
             ></textarea>
           </div>
-          <button type='submit' className='btn btn-primary'>
+          <button type='submit' className='btn btn-primary' disabled={!isLoggedIn}>
             Submit
           </button>
         </form>

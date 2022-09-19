@@ -23,9 +23,10 @@ export const getBooks = createAsyncThunk(
 export const insertBook = createAsyncThunk(
   "book/insertBook",
   async (bookData, thunkAPI) => {
-    const { rejectWithValue } = thunkAPI;
+    const { rejectWithValue, getState } = thunkAPI;
+    //getState => get the global state of app and enter the certain reducer 
     try {
-      console.log(bookData)
+      bookData.userName = getState().auth.name;
       const res = await fetch("http://localhost:3009/books", {
         method: "POST",
         body: JSON.stringify(bookData),

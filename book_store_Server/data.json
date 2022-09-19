@@ -19,16 +19,11 @@
       "price": 25
     },
     {
-      "id": 4,
-      "title": "Learn Flutter",
-      "description": "Learn Flutter from scratch",
-      "price": 20
-    },
-    {
-      "title": "Learn Python",
-      "price": "90",
-      "description": "Learn Pythonfrom scratch",
-      "id": 5
+      "title": "Learn HTML",
+      "price": "9",
+      "description": "Learn HTML",
+      "userName": "CodeBindHex",
+      "id": 4
     }
   ]
 }
