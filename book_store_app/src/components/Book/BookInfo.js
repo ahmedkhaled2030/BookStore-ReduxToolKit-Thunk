@@ -18,7 +18,7 @@ const BookInfo = ({ info }) => {
           </div>
         </div>
       ) : (
-        <div className="alert alert-danger" role="alert">
+        <div className="alert alert-primary" role="alert">
           There is no book selected yet. Please select!
         </div>
       )}
